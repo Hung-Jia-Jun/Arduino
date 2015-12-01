@@ -1,0 +1,38 @@
+#include <SoftwareSerial.h>
+
+
+
+
+//*-- IoT Information
+#define SSID "[iPhone]"
+#define PASS "[joy871205]"
+#define IP "184.106.153.149" // ThingSpeak IP Address: 184.106.153.149
+// 使用 GET 傳送資料的格式
+// GET /update?key=[THINGSPEAK_KEY]&field1=[data 1]&filed2=[data 2]...;
+String GET = "GET /update?key=[ThingSpeak_(Write)API_KEY]";
+String IOTapiKey="M4LD0HB5O6432IM0";//API的KEY，每個人都不一樣
+
+SoftwareSerial ESP8266(0,1);//RX,TX
+
+
+
+
+
+
+
+int  In1 =3;            //In1 繼電器跟Arduino接的腳位為3
+
+void setup()
+{
+    pinMode(In1,OUTPUT);       //設置腳位的模式為輸出
+    ESP8266.begin(9600);
+}
+void loop()
+{
+    digitalWrite(In1,LOW);   //不通電
+    delay(2000);
+
+    digitalWrite(In1,HIGH);  //通電
+    delay(200);
+
+}
